@@ -11,7 +11,7 @@ class PostRepository implements IPostRepository
 {
     public function paginate(int $perPage): LengthAwarePaginator
     {
-        return Post::with('categories')->paginate($perPage);
+        return Post::with('categories')->latest()->paginate($perPage);
     }
 
     public function store(Request $request) : ?Post

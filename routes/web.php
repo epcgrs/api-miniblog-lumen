@@ -32,5 +32,5 @@ $router->group(['prefix'=>'api/v1'], function() use($router) {
     $router->group(['prefix'=>'categories'], function() use($router) {
         $router->get('/', 'CategoriesController@index');
     });
-    
+
 });
