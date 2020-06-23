@@ -17,6 +17,10 @@ class CorsMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        if (!$request->secure() && app()->environment() === 'production') {
+            return redirect()->to($request->getRequestUri(), 302, [], true);
+        }
+
         $headers = [
             'Access-Control-Allow-Origin'      => '*',
             'Access-Control-Allow-Methods'     => 'POST, GET, OPTIONS, PUT, DELETE',
